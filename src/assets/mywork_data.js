@@ -8,13 +8,13 @@ const mywork_data = [
     w_no: 0,
     w_name: "project",
     w_img: vanii,
-    w_link: "https://vanii.montirajput.space/",
+    w_link: "https://vanii.montirajput.dev/",
   },
   {
     w_no: 1,
     w_name: "project",
     w_img: havenSpot,
-    w_link: "https://havenspot.montirajput.space/listings",
+    w_link: "https://haven.montirajput.dev",
   },
   {
     w_no: 2,

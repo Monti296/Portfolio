@@ -1,11 +1,10 @@
 import highlighter from "../../assets/highlighter.svg";
 import "./Services.css";
-import backi from "../../assets/backi.jpg";
 import front from "../../assets/front.svg";
 import back from "../../assets/back.svg";
 import both from "../../assets/both.svg";
-import haven from "../../assets/haven.png";
-import boths from "../../assets/boths.png";
+
+
 export const Services = () => {
   return (
     <div id="Services" className="services">
@@ -27,7 +26,7 @@ export const Services = () => {
             seamless user experiences. I love turning ideas into interactive
             products that users enjoy using.
           </p>
-          <img src={haven} alt="" className="service-img" />
+        
         </div>
 
         <div className="service">
@@ -43,7 +42,7 @@ export const Services = () => {
             systems. I connect frontend designs with backend functionality to
             deliver full web experiences.
           </p>
-          <img src={backi} alt="" className="service-img" />
+        
         </div>
 
         <div className="service">
@@ -59,7 +58,7 @@ export const Services = () => {
             everything — <br />
             UI, APIs, authentication, and database (MongoDB).
           </p>
-          <img src={boths} alt="" className="service-img" />
+          
         </div>
       </div>
     </div>

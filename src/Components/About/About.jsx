@@ -1,17 +1,16 @@
 import "./About.css";
 import highlighter from "../../assets/highlighter.svg";
-import about from "../../assets/about.JPG";
+
 
 const About = () => {
   return (
     <div id="About" className="about">
       <div className="title">
         <h1>About me</h1>
-        <img src={highlighter} alt="" />
       </div>
       <div className="about-sections">
         <div className="about-left">
-          <img src={about} alt="" />
+         
         </div>
         <div className="about-right">
           <div className="about-para">
