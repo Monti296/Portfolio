@@ -6,6 +6,7 @@
   height: 100%;
   pointer-events: none;
   mix-blend-mode: screen;
+  filter: brightness(1.25) saturate(1.2);
 }
 
 @media (pointer: coarse) {

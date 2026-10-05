@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./CursorWater.css";
 
-const MAX_RIPPLES = 24;
+const MAX_RIPPLES = 30;
 
 const CursorWater = () => {
   const canvasRef = useRef(null);
@@ -61,33 +61,34 @@ const CursorWater = () => {
 
       for (let index = ripples.length - 1; index >= 0; index -= 1) {
         const ripple = ripples[index];
-        ripple.age += 0.018;
-        ripple.spread += 1.55;
+        ripple.age += 0.014;
+        ripple.spread += 1.8;
 
         if (ripple.age >= 1) {
           ripples.splice(index, 1);
           continue;
         }
 
-        const opacity = (1 - ripple.age) ** 2 * ripple.strength;
+        const opacity = (1 - ripple.age) ** 1.7 * ripple.strength;
         const radius = ripple.spread;
         const gradient = context.createRadialGradient(
           ripple.x,
           ripple.y,
-          Math.max(0, radius - 18),
+          Math.max(0, radius - 28),
           ripple.x,
           ripple.y,
-          radius + 26
+          radius + 42
         );
-        gradient.addColorStop(0, `rgba(180, 75, 255, ${opacity * 0.08})`);
-        gradient.addColorStop(0.75, `rgba(78, 194, 255, ${opacity * 0.04})`);
-        gradient.addColorStop(1, "rgba(78, 194, 255, 0)");
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity * 0.16})`);
+        gradient.addColorStop(0.28, `rgba(150, 225, 255, ${opacity * 0.13})`);
+        gradient.addColorStop(0.72, `rgba(52, 170, 255, ${opacity * 0.09})`);
+        gradient.addColorStop(1, "rgba(52, 170, 255, 0)");
         context.fillStyle = gradient;
         context.beginPath();
-        context.arc(ripple.x, ripple.y, radius + 26, 0, Math.PI * 2);
+        context.arc(ripple.x, ripple.y, radius + 42, 0, Math.PI * 2);
         context.fill();
 
-        [0, 12, 24].forEach((offset, ringIndex) => {
+        [0, 14, 28].forEach((offset, ringIndex) => {
           context.beginPath();
           context.arc(
             ripple.x,
@@ -98,11 +99,19 @@ const CursorWater = () => {
           );
           context.strokeStyle =
             ringIndex === 1
-              ? `rgba(219, 144, 255, ${opacity * 0.18})`
-              : `rgba(99, 210, 255, ${opacity * 0.12})`;
-          context.lineWidth = 1;
+              ? `rgba(255, 255, 255, ${opacity * 0.72})`
+              : `rgba(107, 211, 255, ${opacity * 0.58})`;
+          context.lineWidth = ringIndex === 1 ? 1.6 : 1.2;
           context.stroke();
         });
+
+        context.beginPath();
+        context.arc(ripple.x, ripple.y, 3.5, 0, Math.PI * 2);
+        context.fillStyle = `rgba(255, 255, 255, ${opacity * 0.8})`;
+        context.shadowColor = "rgba(126, 220, 255, 0.9)";
+        context.shadowBlur = 14;
+        context.fill();
+        context.shadowBlur = 0;
       }
 
       animationFrame = requestAnimationFrame(draw);
